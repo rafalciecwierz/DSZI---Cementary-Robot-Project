@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="24" tilewidth="32" tileheight="32" nextobjectid="1">
+ <tileset firstgid="1" name="rvt6iTB" tilewidth="32" tileheight="32" tilecount="4096" columns="64">
+  <image source="../../opentibia_sprite_pack-master/rvt6iTB.png" trans="ff00ff" width="2048" height="2048"/>
+ </tileset>
+ <tileset firstgid="4097" name="otsp_tiles_01" tilewidth="32" tileheight="32" tilecount="1008" columns="16">
+  <image source="../../opentibia_sprite_pack-master/opentibia_sprite_pack-master/sprite_sheets/otsp_tiles_01.png" trans="ff00ff" width="512" height="2016"/>
+ </tileset>
+ <tileset firstgid="5105" name="otsp_walls_01" tilewidth="32" tileheight="32" tilecount="1024" columns="16">
+  <image source="../../opentibia_sprite_pack-master/opentibia_sprite_pack-master/sprite_sheets/otsp_walls_01.png" trans="ff00ff" width="512" height="2048"/>
+ </tileset>
+ <tileset firstgid="6129" name="otsp_walls_02" tilewidth="32" tileheight="32" tilecount="976" columns="16">
+  <image source="../../opentibia_sprite_pack-master/opentibia_sprite_pack-master/sprite_sheets/otsp_walls_02.png" trans="ff00ff" width="512" height="1952"/>
+ </tileset>
+ <tileset firstgid="7105" name="otsp_creatures_01" tilewidth="32" tileheight="32" tilecount="1024" columns="16">
+  <image source="../../opentibia_sprite_pack-master/opentibia_sprite_pack-master/sprite_sheets/otsp_creatures_01.png" trans="ff00ff" width="512" height="2048"/>
+ </tileset>
+ <tileset firstgid="8129" name="otsp_town_01" tilewidth="32" tileheight="32" tilecount="928" columns="16">
+  <image source="../../opentibia_sprite_pack-master/opentibia_sprite_pack-master/sprite_sheets/otsp_town_01.png" trans="ff00ff" width="512" height="1856"/>
+ </tileset>
+ <layer name="Trawa" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJylluGKhDAMhJetdde7E4rV93/Vq2Bgdpypwv4IaE3yNU0ak8rj8WwyNnk1eTeZjjWU8QtBv+E7NRngeddbQI99/DT5bVKbzGLPy2GHrLD5O2xmYmd6Rn8V9vsSvjgutFfcmViOz37RJ/tFtmOynovf5at3nvhegTcJP7Wc6yBT3Bxj5BT5K/A5VvTt4tiAjbHH9945qzNeRVyKz3uL7/G8AJ8ZU4fvOBwT2iXi93LcOxd1tzl+F0+PXzsMl5uIvRf3LHSu9O/yr/TCl7vfis9nVIUO5wlrZaGcD+TrKk/joffu6Kl+w72Baw5rNfq46i09UbquN7laDX66weC7oO7I7nPvB9n4UP8K7sdYI+7uOP5WPvua2gP2vlHw1/JZd8perUVsHIs7z2z4HL+yu8PnfC9mL4qt/kXBTmIda2oo+tycuPnD5c3tLWagarg4Z7n+5/4zPJNFbrC/uDnvWc7z3gq+3D+zUj543+p+qxk2lXONufmT7d36IPi1o7sztgt+fMu0rs5Q3YGwcXOci/8fuE5J7g==
+  </data>
+ </layer>
+ <layer name="Droga" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztVQsKwzAIzRHCPvc/Xxq7bDdoChEeosMsWctggjSo8denCeFPR9MlhnCLZ2ehU655pcpLZWpfPqO8gO4B5wR2Wciyo+Zk2FhyjVZhu/f7Hn0+lgnxR2qYEd/q81H9H/GBWGHskMAV6hl/qEMfKLd6Oyv3GT7oi/F/5f9flf04I77cCxohVhA/azsz1pDJ0JFi+2numpwMn6P998p5/iRZOLOwLX167y6d9Vu+EW8985cnxef3aScLo1pejLHR+J67paP/PTVoPr15pajHkrb8f73457mitgNKY35Tnm92Ae6MV7PJ0Z7Vs2kDG1un1A==
+  </data>
+ </layer>
+ <layer name="Groby" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztlksOgCAMBVnJmiP5W/g5lsK17cakBkxbCwmJTNJNM5REn4gxdbI4Y3qo1dF9ictlgjUz1ODovsTlssGaEWp3dF/iNmK0mdK6VKa85buY1IyUS2UqWL6LSc1omYypPX+YEq72TMvh/hnqP4nPn6/cM7j5w4QM+wfh+VcK7l6au0uOGZq7S44Zqefku3f/gPd72qfTvnWaC/5KRAQ=
+  </data>
+ </layer>
+ <layer name="Obiekty" width="32" height="24">
+  <data encoding="base64" compression="zlib">
+   eJztkjkKgDAUROco//73cLmAS6utC2jrggNiZ8Qtich/kGaSzGsGUBSgEaAVu46K/bXBMTGfd+4CZqHhz1m2joFnvNiV8H360P9Ghy0iAWLx58/ozuW7+3uTO/v7O7q/Fd2fH3R/K773VzAvLfuPPB2z3oHflecsC9EsPYM=
+  </data>
+ </layer>
+</map>
