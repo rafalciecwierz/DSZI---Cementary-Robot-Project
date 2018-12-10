@@ -5,16 +5,18 @@ from astar import *
 
 
 
-# Variables
-block = 32  # constant for moving and grid
+
 # Positions of each graveplace held in this array
 tombsArray = numpy.array([[6, 1], [12, 1], [17, 1], [23, 1],
                          [1, 6], [6, 6], [12, 6], [17, 6], [23, 6], [28, 6],
                          [1, 11], [6, 11], [12, 11], [17, 11], [23, 11], [28, 11],
                          [1, 16], [6, 19], [23, 19], [28, 16]])
 
-clock = pygame.time.Clock()
 
+
+# Variables
+clock = pygame.time.Clock()     #clock for FPS
+block = 32  # constant for moving and grid
 # Character
 posX = 15
 posY = 22
@@ -22,9 +24,14 @@ left = False
 right = False
 up = False
 down = False
+start = False
 walkCount = 0
-rawX = 4 * block
-rawY = 4 * block
+moves = []
+where = 'S'
+positionX = posX * block
+positionY = posY * block
+end = (0,0)
+
 
 # Loading Textures
 walkRight = [pygame.image.load(os.path.join('img', 'wr1.png')), pygame.image.load(os.path.join('img', 'wr2.png')), pygame.image.load(os.path.join('img', 'wr3.png'))]
@@ -55,7 +62,7 @@ def drewCementary():
     tombsDraw(20, 2, 4, 3)
 
 def checkFunction():
-    global posY, posX
+    global posY, posX, moves, end
     #maze jest obrocony czyli x to y a y to x
     maze = [[-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],   #0 row
             [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],   #1
@@ -63,7 +70,7 @@ def checkFunction():
             [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1],   #3
             [-1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1],                           #4
             [-1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1],       #5
-            [-1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1],       #6
+            [-1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 100, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1],       #6
             [-1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1],       #7
             [-1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1, -1, 1, -1, -1, -1, -1],       #8
             [-1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1],                           #9
@@ -82,35 +89,44 @@ def checkFunction():
             [-1, -1, -1, -1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, -1, -1, -1, -1],                           #22
             [-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1]]   #23
     start = (posY, posX)
-    end = (4, 4)
+    # ( Y , X )
+    end = (4, 16)
     path = astar(maze, start, end)
-    before = start
     after = (0,0)
     for i in path:
         if i == start:
-            print('ELDOKA')
+            print('Check')
             after = i
         else:
             before = after
             after = i
             if (after[0] - before[0]) > 0:
                 print("DOWN")
+                moves.append('D')
             elif(after[0] - before[0]) < 0:
                 print("UP")
+                moves.append('U')
             else:
                 if (after[1] - before[1]) > 0:
                     print("Right")
+                    moves.append('R')
                 else:
                     print("Left")
+                    moves.append('L')
+    moves.reverse()
+    print(moves)
 
 
-
+#setting maze grid and routing path to follow
 checkFunction()
+
+
+
 
 # Refreshing game window
 def redrawGameWidnow():
 
-    global walkCount, rawX, rawY
+    global walkCount, where, positionX, positionY, start, end
     screen.blit(bg, (0, 0))
     drewCementary()
 
@@ -131,14 +147,69 @@ def redrawGameWidnow():
         if walkCount < 3:
             walkCount += 1
     else:
-        screen.blit(walkDown[walkCount % 3], (posX * block, posY * block))
-
+        screen.blit(walkDown[walkCount % 3], (positionX, positionY))
+    if start:
+        pygame.draw.rect(screen, (255, 255, 255), (end[1]*block, end[0]*block, 32, 32))
+        if where == 'S':
+            where = moves.pop()
+        elif where == 'U':
+            screen.blit(walkUp[walkCount % 3], (positionX, positionY))
+            if walkCount < 32:
+                positionY += -8
+                walkCount += 8
+            else:
+                print('Moves up')
+                walkCount = 0
+                if moves:
+                    where = moves.pop()
+                else:
+                    where = 'N'
+                    start = False
+        elif where == 'L':
+            screen.blit(walkLeft[walkCount % 3], (positionX, positionY))
+            if walkCount < 32:
+                positionX += -8
+                walkCount += 8
+            else:
+                print('Moves Left')
+                walkCount = 0
+                if moves:
+                    where = moves.pop()
+                else:
+                    where = 'N'
+                    start = False
+        elif where == 'R':
+            screen.blit(walkRight[walkCount % 3], (positionX, positionY))
+            if walkCount < 32:
+                positionX += 8
+                walkCount += 8
+            else:
+                print('Moves Right')
+                walkCount = 0
+                if moves:
+                    where = moves.pop()
+                else:
+                    where = 'N'
+                    start = False
+        elif where == 'D':
+            screen.blit(walkDown[walkCount % 3], (positionX, positionY))
+            if walkCount < 32:
+                positionY += 8
+                walkCount += 8
+            else:
+                print('Moves Down')
+                walkCount = 0
+                if moves:
+                    where = moves.pop()
+                else:
+                    where = 'N'
+                    start = False
 
     pygame.display.update()
 
 run = True
 while run:
-    clock.tick(16) # FPS
+    clock.tick(32) # FPS
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -174,6 +245,9 @@ while run:
             right = False
             up = False
             down = False
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
+            start = True
+
 
     redrawGameWidnow()
 pygame.quit()
