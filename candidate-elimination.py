@@ -297,7 +297,41 @@ for x in X:
 
 
 a = CandidateElimination(dataset,f) #pass the dataset to the algorithm class and call the run algoritm method
-nice=a.run_algorithm()
+choice=a.run_algorithm()
 
-print('Wynik jest taki : ',nice)
+
+int
+print('Wynik jest taki : ',choice)
+print('Petla')
+for tup in choice:
+    valueTomb = valueFlower = valueTorch = modifierTomb = modifierTorch = modifierFlower = 0
+    for x in tup:
+
+        if x == 'zapadl sie':
+            valueTomb = 0
+            modifierTomb = 12
+        elif x == 'zapada sie':
+            valueTomb = 1
+            modifierTomb = 8
+        elif x == 'trzyma sie':
+            valueTomb = 3
+            modifierTomb = 0
+
+        if x == 'zwiedly':
+            valueFlower = 0
+            modifierFlower = 4
+        elif x == 'zyja':
+            valueFlower = 1
+            modifierFlower = 0
+
+        if x == 'wypalona':
+            valueTorch = 0
+            modifierTorch = 4
+        elif x == 'wypala sie':
+            valueTorch = 1
+            modifierTorch = 2
+        elif x == 'swiezo zapalona':
+            valueTorch = 4
+            modifierTorch = 0
+    print(modifierTomb,modifierFlower,modifierTorch)
 
