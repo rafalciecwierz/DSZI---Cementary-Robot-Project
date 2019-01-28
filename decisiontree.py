@@ -16,5 +16,6 @@ Y.pop(0)
 clf = tree.DecisionTreeClassifier()
 clf = clf.fit(X, Y)
 
+
 def getPriority(tomb):
     return int(clf.predict([tomb]))

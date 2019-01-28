@@ -1,6 +1,7 @@
 import math, pygame, sys, os, numpy, random, time
 from astar import *
-from decisiontree import * #My algs #Maciek
+from decisiontree import *
+#My algs #Maciek
 
 # Positions of each graveplace held in this array
 # Positions 0-19 #Maciek
